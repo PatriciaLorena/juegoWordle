@@ -8,7 +8,8 @@
   </head>
   <body>
     <h1>Wordle PPY</h1>
-    <input type="text" maxlength="5" id="guess-input" >
+    <div id="mensaje-error"></div>
+    <input type="text" maxlength="5" id="guess-input" oninput="validarInput(this)" >
     <button id="guess-button">Intentar</button>
       <div id='grid'>
         

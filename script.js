@@ -2,6 +2,15 @@ let diccionario = ["APPLE","HOUSE","MOUSE","YOUTH","GRADE","DANCE"];
 let palabra = getWord();
 let intentos = 6;
 
+const input = document.getElementById("guess-input");
+
+const endpoint = "https://random-word-api.herokuapp.com/word?length=5";
+fetch(endpoint).then((response)=>{
+    response.json().then((data)=>{
+        console.log(data[0])
+        palabra = data[0].toUpperCase();
+    });
+});
 
 //hay que usar awey y asing
 
@@ -39,9 +48,6 @@ boton.addEventListener("click", ()=>{
         row.appendChild(SPAN);
     }
     GRID.appendChild(row);
-    console.log(row)
-
-
 
     intentos--;
     if (INTENTO === palabra ) {
@@ -51,6 +57,8 @@ boton.addEventListener("click", ()=>{
     if (!intentos){
         terminar("PERDISTE😖")
     }
+    // Limpiar el contenido del input después de procesar la jugada
+    input.value = "";
 });
 
 function terminar(mensaje){
@@ -61,19 +69,20 @@ function terminar(mensaje){
 }
 
 function leerIntento(){
-    const input = document.getElementById("guess-input");
     return input.value.toUpperCase();
 }
 
-
-//para validar ingresar datos
-
-
 function validarInput(input) {
-    // Obtener el valor actual del campo de texto
     let valor = input.value;
-  
-    // Quitar caracteres no alfabéticos
+
+    const mensajeError = document.getElementById("mensaje-error");
+        if (/[^A-Za-z]/.test(valor)) {
+            mensajeError.textContent = "¡Solo se permiten letras! Los números y caracteres especiales no son permitidos.";
+        } else {
+            mensajeError.textContent = ""; // Limpiar el mensaje de error si la entrada es válida
+        }
+
+    // Quitar caaracteres especiales y numeros 
     valor = valor.replace(/[^A-Za-z]/g, '');
   
     // Limitar la longitud a 5 caracteres
@@ -81,8 +90,5 @@ function validarInput(input) {
   
     // Actualizar el valor del campo de texto
     input.value = valor;
+    
   }
-
-
-
-
