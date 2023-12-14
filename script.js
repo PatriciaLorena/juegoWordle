@@ -2,13 +2,6 @@ let diccionario = ["APPLE","HOUSE","MOUSE","YOUTH","GRADE","DANCE"];
 let palabra = getWord();
 let intentos = 6;
 
-const endpoint = "https://random-word-api.herokuapp.com/word?length=5";
-fetch(endpoint).then((response)=>{
-    response.json().then((data)=>{
-        console.log(data[0])
-        palabra = data[0].toUpperCase();
-    });
-});
 
 //hay que usar awey y asing
 
