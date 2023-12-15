@@ -68,3 +68,25 @@ button:active {
 .input-area{
     margin: 30px;
 }
+
+
+@media screen and (min-width: 200px) and (max-width: 900px) {
+  #guess-input {
+    font-size: 30px;
+    width: 25%;
+    border: 1px solid #ccc;
+  }
+     
+  #mensaje-error{
+    font-size: 30px;
+  }
+  body {
+    font-size: 30px;
+  }
+  #guess-button {
+    font-size: 30px;
+  }
+  .letter {
+    font-size: 30px;
+}
+}
